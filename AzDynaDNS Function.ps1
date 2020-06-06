@@ -3,13 +3,13 @@ param($Request, $TriggerMetadata)
 ############### Settings ##############
 #Only used if Autodetection fails, e.g. multiple DNS zones, etc.
 $ResourceGroup = "AzDynDNS"
-$ZoneName = "Limenetworks.it"
+$ZoneName = "Limenet.eu"
 ############### /Settings ##############
 if (!$request.headers.authorization) {
     write-host "No API key"
     Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
             StatusCode = [HttpStatusCode]::OK
-            Body       = "401 - No API token or token is invalid."
+            Body       = "badauth"
         })
     exit
 }
@@ -21,7 +21,7 @@ if ($APIKey -ne $env:APIKey) {
     write-host "Invalid API key"
     Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
             StatusCode = [HttpStatusCode]::OK
-            Body       = "401 - No API token or token is invalid."
+            Body       = "badauth"
         })
     exit
 }
