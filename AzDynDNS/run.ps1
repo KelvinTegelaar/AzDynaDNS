@@ -1,9 +1,6 @@
 using namespace System.Net
 param($Request, $TriggerMetadata)
 ############### Settings ##############
-#Only used if Autodetection fails, e.g. multiple DNS zones, etc.
-$ResourceGroup = "AzDynDNS"
-$ZoneName = "Limenet.eu"
 ############### /Settings ##############
 if (!$request.headers.authorization) {
     write-host "No API key"
