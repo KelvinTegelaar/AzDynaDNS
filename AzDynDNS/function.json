@@ -2,6 +2,7 @@
   "bindings": [
     {
       "authLevel": "anonymous",
+      "route": "{* path}",
       "type": "httpTrigger",
       "direction": "in",
       "name": "Request",
